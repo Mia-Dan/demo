@@ -1,5 +1,5 @@
 # GAN 
-This program generate "handwritten" numbers, using MNIST as training data.
+This program generate "handwritten" numbers, using MNIST as training data.  
 Tested in MATLAB 2019b, Deeplearning Toolbox is required.
 
 ## How to Use 
@@ -14,3 +14,4 @@ Tested in MATLAB 2019b, Deeplearning Toolbox is required.
 
 ## Example
 See example_after_5_epoches.png 
+<img src="https://github.com/Mia-Dan/demo/blob/main/DL-GAN/example_after_5_epoches.png" width="50%" />
