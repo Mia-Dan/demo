@@ -13,5 +13,5 @@ Tested in MATLAB 2019b, Deeplearning Toolbox is required.
 4. Run GAN.m
 
 ## Example
-See example_after_5_epoches.png 
-<img src="https://github.com/Mia-Dan/demo/blob/main/DL-GAN/example_after_5_epoches.png" width="50%" />
+See example_after_5_epoches.png  
+<img src="https://github.com/Mia-Dan/demo/blob/main/DL-GAN/example_after_5epoches.png" width="50%" />
