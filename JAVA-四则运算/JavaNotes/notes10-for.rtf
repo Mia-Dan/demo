@@ -1,0 +1,73 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fnil\fcharset0 Monaco;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue10;\red0\green0\blue0;\red255\green255\blue10;
+\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c99942\c98555\c0;\cssrgb\c0\c0\c0;\cssrgb\c99942\c98555\c0;
+\csgray\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf0 \cb2 \expnd0\expndtw0\kerning0
+Notice how the code declares a variable within the initialization expression. The scope of this variable extends from its declaration to the end of the block governed by the 
+\f1 for
+\f0  statement, \cb1 so it can be used in the termination and increment expressions as well. \
+\
+If the variable that controls a 
+\f1 for
+\f0  statement is not needed outside of the loop, it's best to declare the variable in the initialization expression. The names 
+\f1 i
+\f0 , 
+\f1 j
+\f0 , and 
+\f1 k
+\f0  are often used to control 
+\f1 for
+\f0  loops; declaring them within the initialization expression \cb2 limits their life span\cb1  and reduces errors.\cf3 \
+\
+The 
+\f1 for
+\f0  statement also has another form designed for iteration through Collections and arrays This form is sometimes referred to as the 
+\i \cb4 enhanced for
+\i0  statement, and can be used to make your loops more compact and easy to read.\cb1  To demonstrate, consider the following array, which holds the numbers 1 through 3:\
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 int[] numbers = \{1,2,3\};\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 The following program uses the\cb5  enhanced 
+\f1 for
+\f0  t\cb1 o loop through the array:\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 \
+class EnhancedForDemo \{\
+    public static void main(String[] args)\{\
+         int[] numbers = \{1,2,3\};\
+         for (int item : numbers) \{\
+             System.out.println("Count is: " + item);\
+         \}\
+    \}\
+\}\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 \cb4 In this example, the variable 
+\f1 item
+\f0  holds the current value from the numbers array.\cb1  The output from this program is the same as before:\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 Count is: 1\
+Count is: 2\
+Count is: 3\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 \cb5 We recommend using this form of the 
+\f1 for
+\f0  statement instead of the general form whenever possible.}

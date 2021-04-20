@@ -1,0 +1,5 @@
+
+IDE v JDK v SDK
+ide  是集成开发环境，就是你写代码用的工具，你写代码不至于用记事本吧？用工具，比如eclipse，或者netbean，这个就是ide.
+jdk  是java编程用到的库，比如你写程序，要用到Integer类，这个Integer类就是在jdk里定义的，写程序要把jdk引用进去，否者程序编译不了。 Elipse里集成了jdk，所以不需要单独下载，但是eclipse不是jdk。
+sdk 第三方发布的库，比如你要写Android程序，要下载Android SDK，引用Android SDK里面的库文件。

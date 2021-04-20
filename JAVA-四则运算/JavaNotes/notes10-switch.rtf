@@ -1,0 +1,88 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fnil\fcharset0 Monaco;\f2\fmodern\fcharset0 Courier;
+\f3\fnil\fcharset0 AppleColorEmoji;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue10;\red205\green205\blue205;
+\red13\green65\blue139;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c99942\c98555\c0;\csgray\c84070;
+\cssrgb\c3529\c33725\c61569;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf0 \expnd0\expndtw0\kerning0
+Deciding whether to use 
+\f1 if-then-else
+\f0  statements or a 
+\f1 switch
+\f0  statement is based on \cb3 readability\cb1  and \cb3 the expression that the statement is testing\cb1 . An 
+\f1 if-then-else
+\f0  statement can test expressions based on ranges of values or conditions, whereas a 
+\f1 switch
+\f0  statement tests expressions based only on a single \cb3 integer\cb1 , enumerated value, or 
+\f1 \cb3 String
+\f0 \cb1  object.\
+\
+\cf4 *A 
+\f1 switch
+\f0  works with the 
+\f1 byte
+\f0 , 
+\f1 short
+\f0 , 
+\f1 char
+\f0 , and 
+\f1 int
+\f0  primitive data types. It also works with 
+\i enumerated types
+\i0 , the 
+\f1 String
+\f0  class, and a few special classes that wrap certain primitive types: 
+\f1 Character
+\f0 , 
+\f1 Byte
+\f0 , 
+\f1 Short
+\f0 , and 
+\f1 Integer
+\f0 .\cf0 \
+\
+Another point of interest is the 
+\f1 break
+\f0  statement. Each 
+\f1 break
+\f0  statement terminates the enclosing 
+\f1 switch
+\f0  statement. \cb3 Control flow continues with the first statement following the 
+\f1 switch
+\f0  block. The 
+\f1 break
+\f0  statements are necessary because without them, statements in 
+\f1 switch
+\f0  blocks 
+\i fall through
+\i0 :\cb1  All statements after the matching 
+\f1 case
+\f0  label are executed in sequence, regardless of the expression of subsequent 
+\f1 case
+\f0  labels, until a 
+\f1 break
+\f0  statement is encountered. \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 switch (month) \{\
+            case 1:  futureMonths.add("January");\
+            case 2:  futureMonths.add("February");\
+            \'85\'85\
+            case 12: futureMonths.add("December");\
+                     \cb3 break;\cb1 \
+            default: break;\
+        \}\
+\pard\pardeftab720\partightenfactor0
+
+\f3 \cf0 \uc0\u11014 \u65039  
+\f0 The 
+\f1 default
+\f0  section handles all values that are not explicitly handled by one of the 
+\f1 case
+\f0  sections.}

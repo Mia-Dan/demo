@@ -1,0 +1,295 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 Tahoma;\f1\fmodern\fcharset0 CourierNewPSMT;\f2\fmodern\fcharset0 CourierNewPS-BoldMT;
+\f3\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red0\green0\blue0;\red18\green139\blue2;
+\red190\green0\blue4;\red255\green255\blue10;\red230\green230\blue230;\red0\green0\blue0;\red217\green0\blue27;
+\red85\green142\blue40;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c100000\c100000;\csgray\c0\c0;\cssrgb\c0\c60000\c0;
+\cssrgb\c80000\c0\c0;\cssrgb\c99942\c98555\c0;\csgray\c92143;\cssrgb\c0\c0\c0;\cssrgb\c89020\c10588\c13725;
+\cssrgb\c39975\c61335\c20601;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\qj\partightenfactor0
+
+\f0\fs28 \cf0 \expnd0\expndtw0\kerning0
+\
+
+\b variable
+\b0 \
+\
+\cb2 A computer program manipulates (or processes) data. A variable is a storage location (like a house, a pigeon hole, a letter box) that stores a piece of data for processing. It is called variable because you can change the value stored inside.\
+\cb1 \
+\cb2 More precisely, a variable is a named storage location, that stores a value of a particular data type. In other words, a variable has a \ul name\ulnone , a \ul type\ulnone  and stores a \ul value\ulnone  of that particular type.\
+\
+\
+\pard\pardeftab720\qj\partightenfactor0
+
+\f1\fs26 \cf0 \cb3 int number;   \cf4         \
+// Declare a variable named "number" of the type "int" (integer).\cf0 \
+\pard\pardeftab720\qj\partightenfactor0
+\cf5 int number;\cf0            \
+\pard\pardeftab720\qj\partightenfactor0
+\cf4 // ERROR: The variable named "number" has already been declared.
+\f0\fs28 \cf0 \
+\pard\pardeftab720\qj\partightenfactor0
+\cf0 \cb2 \
+\cb6 Each variable can only be declared once.\cb2  (You cannot have two houses with the same address.) cuz identifier shall be unique.\
+Once declared, the type of a variable CANNOT be changed.\
+\cb3 \
+\pard\tx566\pardeftab720\qj\partightenfactor0
+
+\f1\fs26 \cf0 int sum;         \cf4 // Declare an "int" variable named "sum"\cf0 \
+double average;  \cf4 // Declare a "double" variable named "average"\cf0 \
+String message;  \cf4 // Declare a "String" variable named "message"\cf0 \
+char grade;      \cf4 // Declare a "char" variable named "grade"
+\f0\fs28 \cf0 \
+\pard\pardeftab720\qj\partightenfactor0
+\cf0 \
+\cb6 The concept of type was introduced in the early programming languages to simplify interpretation of data made up of binary sequences (
+\f1 0
+\f0 's and 
+\f1 1
+\f0 's). The type determines the size and layout of the data, the range of its values, and the set of operations that can be applied.\cb2 \
+\
+\
+\pard\pardeftab720\qj\partightenfactor0
+
+\b \cf0 \cb3 Identifiers / names\
+\pard\pardeftab720\qj\partightenfactor0
+
+\b0 \cf0 \
+\cb2 An identifier is needed to name a variable (or any other entity such as a method or a class). Java imposes the following rules on identifiers:\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\qj\partightenfactor0
+\ls1\ilvl0\cf0 \cb2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+An identifier is a sequence of characters, of any length, comprising uppercase and lowercase letters 
+\f1 (a-z, A-Z)
+\f0 , digits 
+\f1 (0-9)
+\f0 , underscore (
+\f1 _
+\f0 ), and dollar sign (
+\f1 $
+\f0 ).\cb1 \
+\ls1\ilvl0\cb2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\cf7 \expnd0\expndtw0\kerning0
+White space (blank, tab, newline) and other special characters (such as 
+\f1 +
+\f0 , 
+\f1 -
+\f0 , 
+\f1 *
+\f0 , 
+\f1 /
+\f0 , 
+\f1 @
+\f0 , 
+\f1 &
+\f0 , commas, etc.) are not allowed. Take note that blank and dash (
+\f1 -
+\f0 ) are not allowed, i.e., "
+\f1 max value
+\f0 " and "
+\f1 max-value
+\f0 " are not valid names. (This is because blank creates two tokens and dash crashes with minus sign!)\cb1 \
+\ls1\ilvl0\cf0 \cb2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+An identifier must begin with a letter 
+\f1 (a-z, A-Z)
+\f0  or underscore (
+\f1 _
+\f0 ). It cannot begin with a digit 
+\f1 (0-9)
+\f0  (because that could confuse with a number). Identifiers begin with dollar sign (
+\f1 $
+\f0 ) are reserved for system-generated entities.\cb1 \
+\ls1\ilvl0\cb2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+An identifier cannot be a reserved keyword or a reserved literal (e.g., 
+\f1 class
+\f0 , 
+\f1 int
+\f0 , 
+\f1 double
+\f0 , 
+\f1 if
+\f0 , 
+\f1 else
+\f0 , 
+\f1 for
+\f0 , 
+\f1 true
+\f0 , 
+\f1 false
+\f0 , 
+\f1 null
+\f0 ).\cb1 \
+\ls1\ilvl0\cb2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Identifiers are case-sensitive. A 
+\f1 rose
+\f0  is NOT a 
+\f1 Rose
+\f0 , and is NOT a 
+\f1 ROSE
+\f0 .\cb3 \
+\pard\pardeftab720\qj\partightenfactor0
+\cf0 * \cb2 Programmers don't use blank character in any names \cb3 \
+\
+\pard\pardeftab720\qj\partightenfactor0
+
+\b \cf0 convention:
+\b0 \
+\
+\pard\pardeftab720\qj\partightenfactor0
+\cf0 \cb2 A variable name is a noun, or a noun phrase made up of several words with no spaces between words.\'a0The first word is in lowercase, while the remaining words are initial-capitalized. For examples, 
+\f1 radius
+\f0 , 
+\f1 area
+\f0 , 
+\f1 fontSize
+\f0 , 
+\f1 numStudents
+\f0 , 
+\f1 xMax
+\f0 , 
+\f1 yMin
+\f0 , 
+\f1 xTopLeft
+\f0 , 
+\f1 isValidInput
+\f0 , and 
+\f1 thisIsAVeryLongVariableName
+\f0 . This convention is also known as camel-case.\
+\cb3 \
+\pard\pardeftab720\qj\partightenfactor0
+
+\b \cf0 recommendation:
+\b0 \
+\
+\pard\pardeftab720\qj\partightenfactor0
+\cf0 \cb2 Use singular and plural nouns prudently to differentiate between singular and plural variables.\'a0 For example, you may use the variable 
+\f1 row
+\f0  to refer to a single row number and the variable 
+\f1 rows
+\f0  to refer to many rows (such as an array of rows - to be discussed later).\cb3 \
+\
+\
+\pard\pardeftab720\qj\partightenfactor0
+
+\b \cf0 Assignment ("=") :\
+\pard\pardeftab720\qj\partightenfactor0
+
+\b0 \cf0 \
+\pard\pardeftab720\qj\partightenfactor0
+
+\f1\fs26 \cf0 int number;   \cf4         \
+// Declare a variable named "number" of the type "int" (integer).\cf0 \
+number = 99;  \cf4        \
+// Assign an integer value of 99 to the variable "number".\cf0 \
+number = 88;  \cf4         // Re-assign a value of 88 to "number".\cf0 \
+number = number + 1;  \
+\cf4 // 
+\f2\b Evaluate "number + 1", and assign the result back to "number".
+\f1\b0 \cf0 \
+\pard\pardeftab720\qj\partightenfactor0
+
+\f0\fs28 \cf0 \cb2 \
+The symbol 
+\f1 '=' 
+\f0 is known as the assignment operator.\
+In programming, the RHS (Right-Hand Side) of 
+\f1 '='
+\f0  has to be evaluated to a value; while the LHS (Left-Hand Side) shall be a variable. That is, evaluate the RHS first, then assign the result to LHS.\
+\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\pardirnatural\partightenfactor0
+
+\f3\b \cf0 \cb1 \kerning1\expnd0\expndtw0 Final:\
+
+\b0\fs24 \
+\pard\pardeftab720\qj\partightenfactor0
+
+\f1\fs30 \cf8 \cb2 \expnd0\expndtw0\kerning0
+final double PI = 3.14159265;\cf9 \cb1 \uc0\u8232 
+\f0\fs28 \cf0 \cb2 declare a 
+\f1 double
+\f0  variables called 
+\f1 PI
+\f0  and assign a value. 
+\f1 PI
+\f0  is declared 
+\f1 final
+\f0  to specify that its value cannot be changed, i.e., a constant.\cb1 \
+\pard\pardeftab720\qj\partightenfactor0
+\cf0 \cb2 \
+Constants are non-modifiable (immutable) variables, declared with keyword 
+\f1 final
+\f0 . You can only assign values to final variables ONCE. Their values cannot be changed during program execution. For examples:\
+\cb1 \
+\pard\pardeftab720\qj\partightenfactor0
+
+\f2\b\fs26 \cf0 \cb3 final
+\f1\b0  double PI = 3.14159265;  \
+\pard\pardeftab720\qj\partightenfactor0
+\cf4 // Declare and initialize the constant\cf0 \
+\
+\pard\pardeftab720\qj\partightenfactor0
+
+\f2\b \cf0 final
+\f1\b0  int SCREEN_X_MAX = 1280;\
+\pard\pardeftab720\qj\partightenfactor0
+\cf5 SCREEN_X_MAX = 800;\cf0   \
+\pard\pardeftab720\qj\partightenfactor0
+\cf4 // error: cannot assign a value to final variable\cf0 \
+\
+\cf4 // You can only assign value to final variables ONCE\cf0 \
+\pard\pardeftab720\qj\partightenfactor0
+
+\f2\b \cf0 final
+\f1\b0  int SCREEN_Y_MIN;\
+SCREEN_Y_MIN = 0;   \cf4 // First assignment\cf0 \
+\pard\pardeftab720\qj\partightenfactor0
+\cf5 SCREEN_Y_MIN = 10;\cf0   \
+\pard\pardeftab720\qj\partightenfactor0
+\cf4 // error: variable might already have been assigned\
+\cf0 \
+\pard\pardeftab720\qj\partightenfactor0
+
+\f0\b\fs28 \cf0 \cb2 Convention:
+\b0 \
+Use uppercase words, joined with underscore. For example, 
+\f1 MIN_VALUE
+\f0 , 
+\f1 MAX_SIZE
+\f0 , and 
+\f1 INTEREST_RATE_6_MTH
+\f0 .\cb1 \
+\pard\pardeftab720\qj\partightenfactor0
+\cf0 \cb2 \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+System.out.print\
+\
+\pard\pardeftab720\qj\partightenfactor0
+
+\f1 \cf10 System.out.println("number1 after increment is " + number1);\
+
+\fs30 \cb1 \uc0\u8232 
+\f0\fs28 \cf0 \cb2 Instead of using many 
+\f1 print()
+\f0  statements, we could simply place all the items (text strings and variables) into one 
+\f1 println()
+\f0 , with the items separated by 
+\f1 '+'
+\f0 . In this case, 
+\f1 '+'
+\f0  does not perform addition. \
+Instead, it concatenates or joins all the items together.}

@@ -1,0 +1,356 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 Tahoma;\f1\fmodern\fcharset0 CourierNewPSMT;\f2\fnil\fcharset134 PingFangSC-Regular;
+\f3\fnil\fcharset0 Verdana;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red0\green0\blue0;\red52\green52\blue52;
+\red255\green255\blue10;\red230\green230\blue230;\red0\green0\blue0;\red159\green159\blue159;\red241\green241\blue241;
+\red0\green0\blue255;\red15\green114\blue1;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c0\c0;\cssrgb\c26667\c26667\c26667;
+\cssrgb\c99942\c98555\c0;\csgray\c92143;\csgray\c0\c0;\cssrgb\c68627\c68627\c68627;\cssrgb\c95686\c95686\c95686;
+\cssrgb\c0\c0\c100000;\cssrgb\c0\c50980\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\qj\partightenfactor0
+
+\f0\b\fs28 \cf0 \cb2 \expnd0\expndtw0\kerning0
+abstract class
+\b0 \
+\
+Coupled with polymorphism, you can upcast subclass instances to 
+\f1 Shape
+\f0 , and program at the 
+\f1 Shape
+\f0  level, i,e., program at the interface. The separation of interface and implementation enables better software design, and ease in expansion. For example, 
+\f1 Shape
+\f0  defines a method called 
+\f1 getArea()
+\f0 , which all the subclasses must provide the correct implementation. You can ask for a 
+\f1 getArea()
+\f0  from any subclasses of Shape, the correct area will be computed. Furthermore, you application can be extended easily to accommodate new shapes (such as 
+\f1 Circle
+\f0  or 
+\f1 Square
+\f0 ) by deriving more subclasses.\
+\cb1 \
+\pard\pardeftab720\qj\partightenfactor0
+
+\b\fs30 \cf4 \cb2 Rule of Thumb:
+\b0\fs28 \cf0  Program at the interface, not at the implementation. (That is, make references at the superclass; substitute with subclass instances; and invoke methods defined in the superclass only.)\
+\
+\
+\pard\pardeftab720\qj\partightenfactor0
+
+\b \cf0 interface
+\b0 \
+\
+A Java 
+\f1 interface
+\f0  is a 100% abstract superclass which define a set of methods its subclasses must support. \cb5 An 
+\f1 interface
+\f0  contains only 
+\f1 public
+\f0  abstract methods (methods with signature and no implementation) and possibly constants (
+\f1 public
+\f0  
+\f1 static
+\f0  
+\f1 final
+\f0  variables).\cb2  You have to use the keyword "
+\f1 interface
+\f0 " to define an 
+\f1 interface
+\f0  (instead of keyword "
+\f1 class
+\f0 " for normal classes). The keyword 
+\f1 public
+\f0  and 
+\f1 abstract
+\f0  are not needed for its abstract methods as they are mandatory. \cf6 (JDK 8 introduces default and static methods in the interface. JDK 9 introduces private methods in the interface. These will not be covered in this article.)\
+\cf0 \cb1 \
+\cb2 Similar to an 
+\f1 abstract
+\f0  superclass, an 
+\f1 interface
+\f0  cannot be instantiated. You have to create a "subclass" that implements an interface, and provide the actual implementation of all the 
+\f1 abstract
+\f0  methods.\
+\cb1 \
+\cb2 Unlike a normal class, where you use the keyword "
+\f1 extends
+\f0 " to derive a subclass. For interface, we use the keyword "
+\f1 implements
+\f0 " to derive a subclass.\
+\cb1 \
+\cb5 An interface is a contract for what the classes can do. It, however, does not specify how the classes should do it.\cb2  An interface provides a form, a protocol, a standard, a contract, a specification, a set of rules, an interface, for all objects that implement it. It is a specification and\cb7  rules that any object implementing it agrees to follow.\
+\
+\cb2 In Java, 
+\f1 \cb5 abstract
+\f0  class and 
+\f1 interface
+\f0  are used to separate the public interface of a class from its implementation so as to allow the programmer to program at the interface instead of the various implementation.\cb2 \
+\
+\
+
+\f2\b \'bd\'d3\'bf\'da vs \'b3\'e9\'cf\'f3\'c0\'e0
+\f0\b0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 \cb5 \'b3\'e9\'cf\'f3\'c0\'e0\'ca\'c7\'b6\'d4\'d2\'bb\'d6\'d6\'ca\'c2\'ce\'ef\'b5\'c4\'b3\'e9\'cf\'f3\'a3\'ac\'bc\'b4\'b6\'d4\'c0\'e0\'b3\'e9\'cf\'f3\'a3\'ac\'b6\'f8\'bd\'d3\'bf\'da\'ca\'c7\'b6\'d4\'d0\'d0\'ce\'aa\'b5\'c4\'b3\'e9\'cf\'f3\'a1\'a3\cb2 \'b3\'e9\'cf\'f3\'c0\'e0\'ca\'c7\'b6\'d4\'d5\'fb\'b8\'f6\'c0\'e0\'d5\'fb\'cc\'e5\'bd\'f8\'d0\'d0\'b3\'e9\'cf\'f3\'a3\'ac\'b0\'fc\'c0\'a8\'ca\'f4\'d0\'d4\'a1\'a2\'d0\'d0\'ce\'aa\'a3\'ac\'b5\'ab\'ca\'c7\'bd\'d3\'bf\'da\'c8\'b4\'ca\'c7\'b6\'d4\'c0\'e0\'be\'d6\'b2\'bf\'a3\'a8\'d0\'d0\'ce\'aa\'a3\'a9\'bd\'f8\'d0\'d0\'b3\'e9\'cf\'f3\'a1\'a3\'be\'d9\'b8\'f6\'bc\'f2\'b5\'a5\'b5\'c4\'c0\'fd\'d7\'d3\'a3\'ac\'b7\'c9\'bb\'fa\'ba\'cd\'c4\'f1\'ca\'c7\'b2\'bb\'cd\'ac\'c0\'e0\'b5\'c4\'ca\'c2\'ce\'ef\'a3\'ac\'b5\'ab\'ca\'c7\'cb\'fc\'c3\'c7\'b6\'bc\'d3\'d0\'d2\'bb\'b8\'f6\'b9\'b2\'d0\'d4\'a3\'ac\'be\'cd\'ca\'c7\'b6\'bc\'bb\'e1\'b7\'c9\'a1\'a3\'c4\'c7\'c3\'b4\'d4\'da\'c9\'e8\'bc\'c6\'b5\'c4\'ca\'b1\'ba\'f2\'a3\'ac\'bf\'c9\'d2\'d4\'bd\'ab\'b7\'c9\'bb\'fa\'c9\'e8\'bc\'c6\'ce\'aa\'d2\'bb\'b8\'f6\'c0\'e0
+\f3 Airplane
+\f2 \'a3\'ac\'bd\'ab\'c4\'f1\'c9\'e8\'bc\'c6\'ce\'aa\'d2\'bb\'b8\'f6\'c0\'e0
+\f3 Bird
+\f2 \'a3\'ac\'b5\'ab\'ca\'c7\'b2\'bb\'c4\'dc\'bd\'ab
+\f3  
+\f2 \'b7\'c9\'d0\'d0
+\f3  
+\f2 \'d5\'e2\'b8\'f6\'cc\'d8\'d0\'d4\'d2\'b2\'c9\'e8\'bc\'c6\'ce\'aa\'c0\'e0\'a3\'ac\'d2\'f2\'b4\'cb\'cb\'fc\'d6\'bb\'ca\'c7\'d2\'bb\'b8\'f6\'d0\'d0\'ce\'aa\'cc\'d8\'d0\'d4\'a3\'ac\'b2\'a2\'b2\'bb\'ca\'c7\'b6\'d4\'d2\'bb\'c0\'e0\'ca\'c2\'ce\'ef\'b5\'c4\'b3\'e9\'cf\'f3\'c3\'e8\'ca\'f6\'a1\'a3\'b4\'cb\'ca\'b1\'bf\'c9\'d2\'d4\'bd\'ab
+\f3  
+\f2 \'b7\'c9\'d0\'d0
+\f3  
+\f2 \'c9\'e8\'bc\'c6\'ce\'aa\'d2\'bb\'b8\'f6\'bd\'d3\'bf\'da
+\f3 Fly
+\f2 \'a3\'ac\'b0\'fc\'ba\'ac\'b7\'bd\'b7\'a8
+\f3 fly( )
+\f2 \'a3\'ac\'c8\'bb\'ba\'f3
+\f3 Airplane
+\f2 \'ba\'cd
+\f3 Bird
+\f2 \'b7\'d6\'b1\'f0\'b8\'f9\'be\'dd\'d7\'d4\'bc\'ba\'b5\'c4\'d0\'e8\'d2\'aa\'ca\'b5\'cf\'d6
+\f3 Fly
+\f2 \'d5\'e2\'b8\'f6\'bd\'d3\'bf\'da\'a1\'a3\'c8\'bb\'ba\'f3\'d6\'c1\'d3\'da\'d3\'d0\'b2\'bb\'cd\'ac\'d6\'d6\'c0\'e0\'b5\'c4\'b7\'c9\'bb\'fa\'a3\'ac\'b1\'c8\'c8\'e7\'d5\'bd\'b6\'b7\'bb\'fa\'a1\'a2\'c3\'f1\'d3\'c3\'b7\'c9\'bb\'fa\'b5\'c8\'d6\'b1\'bd\'d3\'bc\'cc\'b3\'d0
+\f3 Airplane
+\f2 \'bc\'b4\'bf\'c9\'a3\'ac\'b6\'d4\'d3\'da\'c4\'f1\'d2\'b2\'ca\'c7\'c0\'e0\'cb\'c6\'b5\'c4\'a3\'ac\'b2\'bb\'cd\'ac\'d6\'d6\'c0\'e0\'b5\'c4\'c4\'f1\'d6\'b1\'bd\'d3\'bc\'cc\'b3\'d0
+\f3 Bird
+\f2 \'c0\'e0\'bc\'b4\'bf\'c9\'a1\'a3\'b4\'d3\'d5\'e2\'c0\'ef\'bf\'c9\'d2\'d4\'bf\'b4\'b3\'f6\'a3\'ac\cb5 \'bc\'cc\'b3\'d0\'ca\'c7\'d2\'bb\'b8\'f6
+\f3  "
+\f2 \'ca\'c7\'b2\'bb\'ca\'c7
+\f3 "
+\f2 \'b5\'c4\'b9\'d8\'cf\'b5\'a3\'ac\'b6\'f8
+\f3  
+\f2 \'bd\'d3\'bf\'da
+\f3  
+\f2 \'ca\'b5\'cf\'d6\'d4\'f2\'ca\'c7
+\f3  "
+\f2 \'d3\'d0\'c3\'bb\'d3\'d0
+\f3 "
+\f2 \'b5\'c4\'b9\'d8\'cf\'b5\cb2 \'a1\'a3\'c8\'e7\'b9\'fb\'d2\'bb\'b8\'f6\'c0\'e0\'bc\'cc\'b3\'d0\'c1\'cb\'c4\'b3\'b8\'f6\'b3\'e9\'cf\'f3\'c0\'e0\'a3\'ac\'d4\'f2\'d7\'d3\'c0\'e0\'b1\'d8\'b6\'a8\'ca\'c7\'b3\'e9\'cf\'f3\'c0\'e0\'b5\'c4\'d6\'d6\'c0\'e0\'a3\'ac\'b6\'f8\'bd\'d3\'bf\'da\'ca\'b5\'cf\'d6\'d4\'f2\'ca\'c7\'d3\'d0\'c3\'bb\'d3\'d0\'a1\'a2\'be\'df\'b1\'b8\'b2\'bb\'be\'df\'b1\'b8\'b5\'c4\'b9\'d8\'cf\'b5\'a3\'ac\'b1\'c8\'c8\'e7\'c4\'f1\'ca\'c7\'b7\'f1\'c4\'dc\'b7\'c9\'a3\'a8\'bb\'f2\'d5\'df\'ca\'c7\'b7\'f1\'be\'df\'b1\'b8\'b7\'c9\'d0\'d0\'d5\'e2\'b8\'f6\'cc\'d8\'b5\'e3\'a3\'a9\'a3\'ac\'c4\'dc\'b7\'c9\'d0\'d0\'d4\'f2\'bf\'c9\'d2\'d4\'ca\'b5\'cf\'d6\'d5\'e2\'b8\'f6\'bd\'d3\'bf\'da\'a3\'ac\'b2\'bb\'c4\'dc\'b7\'c9\'d0\'d0\'be\'cd\'b2\'bb\'ca\'b5\'cf\'d6\'d5\'e2\'b8\'f6\'bd\'d3\'bf\'da\'a1\'a3\
+\
+\'c9\'e8\'bc\'c6\'b2\'e3\'c3\'e6\'b2\'bb\'cd\'ac\'a3\'ac\'b3\'e9\'cf\'f3\'c0\'e0\'d7\'f7\'ce\'aa\'ba\'dc\'b6\'e0\'d7\'d3\'c0\'e0\'b5\'c4\'b8\'b8\'c0\'e0\'a3\'ac\'cb\'fc\'ca\'c7\'d2\'bb\'d6\'d6\'c4\'a3\'b0\'e5\'ca\'bd\'c9\'e8\'bc\'c6\'a1\'a3\'b6\'f8\'bd\'d3\'bf\'da\'ca\'c7\'d2\'bb\'d6\'d6\'d0\'d0\'ce\'aa\'b9\'e6\'b7\'b6\'a3\'ac\'cb\'fc\'ca\'c7\'d2\'bb\'d6\'d6\'b7\'f8\'c9\'e4\'ca\'bd\'c9\'e8\'bc\'c6\'a1\'a3\'ca\'b2\'c3\'b4\'ca\'c7\'c4\'a3\'b0\'e5\'ca\'bd\'c9\'e8\'bc\'c6\'a3\'bf\'d7\'ee\'bc\'f2\'b5\'a5\'c0\'fd\'d7\'d3\'a3\'ac\'b4\'f3\'bc\'d2\'b6\'bc\'d3\'c3\'b9\'fd
+\f3 ppt
+\f2 \'c0\'ef\'c3\'e6\'b5\'c4\'c4\'a3\'b0\'e5\'a3\'ac\'c8\'e7\'b9\'fb\'d3\'c3\'c4\'a3\'b0\'e5
+\f3 A
+\f2 \'c9\'e8\'bc\'c6\'c1\'cb
+\f3 ppt B
+\f2 \'ba\'cd
+\f3 ppt C
+\f2 \'a3\'ac
+\f3 ppt B
+\f2 \'ba\'cd
+\f3 ppt C
+\f2 \'b9\'ab\'b9\'b2\'b5\'c4\'b2\'bf\'b7\'d6\'be\'cd\'ca\'c7\'c4\'a3\'b0\'e5
+\f3 A
+\f2 \'c1\'cb\'a3\'ac\'c8\'e7\'b9\'fb\'cb\'fc\'c3\'c7\'b5\'c4\'b9\'ab\'b9\'b2\'b2\'bf\'b7\'d6\'d0\'e8\'d2\'aa\'b8\'c4\'b6\'af\'a3\'ac\'d4\'f2\'d6\'bb\'d0\'e8\'d2\'aa\'b8\'c4\'b6\'af\'c4\'a3\'b0\'e5
+\f3 A
+\f2 \'be\'cd\'bf\'c9\'d2\'d4\'c1\'cb\'a3\'ac\'b2\'bb\'d0\'e8\'d2\'aa\'d6\'d8\'d0\'c2\'b6\'d4
+\f3 ppt B
+\f2 \'ba\'cd
+\f3 ppt C
+\f2 \'bd\'f8\'d0\'d0\'b8\'c4\'b6\'af\'a1\'a3\'b6\'f8\'b7\'f8\'c9\'e4\'ca\'bd\'c9\'e8\'bc\'c6\'a3\'ac\'b1\'c8\'c8\'e7\'c4\'b3\'b8\'f6\'b5\'e7\'cc\'dd\'b6\'bc\'d7\'b0\'c1\'cb\'c4\'b3\'d6\'d6\'b1\'a8\'be\'af\'c6\'f7\'a3\'ac\'d2\'bb\'b5\'a9\'d2\'aa\'b8\'fc\'d0\'c2\'b1\'a8\'be\'af\'c6\'f7\'a3\'ac\'be\'cd\'b1\'d8\'d0\'eb\'c8\'ab\'b2\'bf\'b8\'fc\'d0\'c2\'a1\'a3\'d2\'b2\'be\'cd\'ca\'c7\'cb\'b5\ul \'b6\'d4\'d3\'da\'b3\'e9\'cf\'f3\'c0\'e0\'a3\'ac\'c8\'e7\'b9\'fb\'d0\'e8\'d2\'aa\'cc\'ed\'bc\'d3\'d0\'c2\'b5\'c4\'b7\'bd\'b7\'a8\'a3\'ac\'bf\'c9\'d2\'d4\'d6\'b1\'bd\'d3\'d4\'da\'b3\'e9\'cf\'f3\'c0\'e0\'d6\'d0\'cc\'ed\'bc\'d3\'be\'df\'cc\'e5\'b5\'c4\'ca\'b5\'cf\'d6\'a3\'ac\'d7\'d3\'c0\'e0\'bf\'c9\'d2\'d4\'b2\'bb\'bd\'f8\'d0\'d0\'b1\'e4\'b8\'fc\'a3\'bb\'b6\'f8\'b6\'d4\'d3\'da\'bd\'d3\'bf\'da\'d4\'f2\'b2\'bb\'d0\'d0\'a3\'ac\'c8\'e7\'b9\'fb\'bd\'d3\'bf\'da\'bd\'f8\'d0\'d0\'c1\'cb\'b1\'e4\'b8\'fc\'a3\'ac\'d4\'f2\'cb\'f9\'d3\'d0\'ca\'b5\'cf\'d6\'d5\'e2\'b8\'f6\'bd\'d3\'bf\'da\'b5\'c4\'c0\'e0\'b6\'bc\'b1\'d8\'d0\'eb\'bd\'f8\'d0\'d0\'cf\'e0\'d3\'a6\'b5\'c4\'b8\'c4\'b6\'af\'a1\'a3\ulnone \
+
+\f0 \cb2 \
+
+\f2 \cb2 \'a1\'a1\'a1\'a1\'cf\'c2\'c3\'e6\'bf\'b4\'d2\'bb\'b8\'f6\'cd\'f8\'c9\'cf\'c1\'f7\'b4\'ab\'d7\'ee\'b9\'e3\'b7\'ba\'b5\'c4\'c0\'fd\'d7\'d3\'a3\'ba\'c3\'c5\'ba\'cd\'be\'af\'b1\'a8\'b5\'c4\'c0\'fd\'d7\'d3\'a3\'ba\'c3\'c5\'b6\'bc\'d3\'d0
+\f3 open( )
+\f2 \'ba\'cd
+\f3 close( )
+\f2 \'c1\'bd\'b8\'f6\'b6\'af\'d7\'f7\'a3\'ac\'b4\'cb\'ca\'b1\'ce\'d2\'c3\'c7\'bf\'c9\'d2\'d4\'b6\'a8\'d2\'e5\'cd\'a8\'b9\'fd\'b3\'e9\'cf\'f3\'c0\'e0\'ba\'cd\'bd\'d3\'bf\'da\'c0\'b4\'b6\'a8\'d2\'e5\'d5\'e2\'b8\'f6\'b3\'e9\'cf\'f3\'b8\'c5\'c4\'ee\'a3\'ba\
+\pard\pardeftab720\partightenfactor0
+
+\f3 \cf0 \cb1 \
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt\clvertalbase \clshdrawnil \clwWidth700\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt\clvertalbase \clshdrawnil \clwWidth13880\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf8 \cb9 1\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb2 2\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb9 3\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb2 4\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf10 \cb9 abstract\cf0  \cf10 class\cf0  Door \{\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb2 \'a0\'a0\'a0\'a0\cf10 public\cf0  \cf10 abstract\cf0  \cf10 void\cf0  open();\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb9 \'a0\'a0\'a0\'a0\cf10 public\cf0  \cf10 abstract\cf0  \cf10 void\cf0  close();\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb2 \}\cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs28 \cf0 \cb2 \'a1\'a1\'a1\'a1\'bb\'f2\'d5\'df\'a3\'ba
+\f3 \cb1 \
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt\clvertalbase \clshdrawnil \clwWidth700\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt\clvertalbase \clshdrawnil \clwWidth13880\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf8 \cb9 1\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb2 2\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb9 3\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb2 4\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf10 \cb9 interface\cf0  Door \{\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb2 \'a0\'a0\'a0\'a0\cf10 public\cf0  \cf10 abstract\cf0  \cf10 void\cf0  open();\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb9 \'a0\'a0\'a0\'a0\cf10 public\cf0  \cf10 abstract\cf0  \cf10 void\cf0  close();\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb2 \}\cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs28 \cf0 \cb2 \'a1\'a1\'a1\'a1\'b5\'ab\'ca\'c7\'cf\'d6\'d4\'da\'c8\'e7\'b9\'fb\'ce\'d2\'c3\'c7\'d0\'e8\'d2\'aa\'c3\'c5\'be\'df\'d3\'d0\'b1\'a8\'be\'af
+\f3 alarm( )
+\f2 \'b5\'c4\'b9\'a6\'c4\'dc\'a3\'ac\'c4\'c7\'c3\'b4\'b8\'c3\'c8\'e7\'ba\'ce\'ca\'b5\'cf\'d6\'a3\'bf\'cf\'c2\'c3\'e6\'cc\'e1\'b9\'a9\'c1\'bd\'d6\'d6\'cb\'bc\'c2\'b7\'a3\'ba
+\f3 \cb1 \
+
+\f2 \cb2 \'a1\'a1\'a1\'a1
+\f3 1
+\f2 \'a3\'a9\'bd\'ab\'d5\'e2\'c8\'fd\'b8\'f6\'b9\'a6\'c4\'dc\'b6\'bc\'b7\'c5\'d4\'da\'b3\'e9\'cf\'f3\'c0\'e0\'c0\'ef\'c3\'e6\'a3\'ac\'b5\'ab\'ca\'c7\'d5\'e2\'d1\'f9\'d2\'bb\'c0\'b4\'cb\'f9\'d3\'d0\'bc\'cc\'b3\'d0\'d3\'da\'d5\'e2\'b8\'f6\'b3\'e9\'cf\'f3\'c0\'e0\'b5\'c4\'d7\'d3\'c0\'e0\'b6\'bc\'be\'df\'b1\'b8\'c1\'cb\'b1\'a8\'be\'af\'b9\'a6\'c4\'dc\'a3\'ac\'b5\'ab\'ca\'c7\'d3\'d0\'b5\'c4\'c3\'c5\'b2\'a2\'b2\'bb\'d2\'bb\'b6\'a8\'be\'df\'b1\'b8\'b1\'a8\'be\'af\'b9\'a6\'c4\'dc\'a3\'bb
+\f3 \cb1 \
+
+\f2 \cb2 \'a1\'a1\'a1\'a1
+\f3 2
+\f2 \'a3\'a9\'bd\'ab\'d5\'e2\'c8\'fd\'b8\'f6\'b9\'a6\'c4\'dc\'b6\'bc\'b7\'c5\'d4\'da\'bd\'d3\'bf\'da\'c0\'ef\'c3\'e6\'a3\'ac\'d0\'e8\'d2\'aa\'d3\'c3\'b5\'bd\'b1\'a8\'be\'af\'b9\'a6\'c4\'dc\'b5\'c4\'c0\'e0\'be\'cd\'d0\'e8\'d2\'aa\'ca\'b5\'cf\'d6\'d5\'e2\'b8\'f6\'bd\'d3\'bf\'da\'d6\'d0\'b5\'c4
+\f3 open( )
+\f2 \'ba\'cd
+\f3 close( )
+\f2 \'a3\'ac\'d2\'b2\'d0\'ed\'d5\'e2\'b8\'f6\'c0\'e0\'b8\'f9\'b1\'be\'be\'cd\'b2\'bb\'be\'df\'b1\'b8
+\f3 open( )
+\f2 \'ba\'cd
+\f3 close( )
+\f2 \'d5\'e2\'c1\'bd\'b8\'f6\'b9\'a6\'c4\'dc\'a3\'ac\'b1\'c8\'c8\'e7\'bb\'f0\'d4\'d6\'b1\'a8\'be\'af\'c6\'f7\'a1\'a3
+\f3 \cb1 \
+
+\f2 \cb2 \'a1\'a1\'a1\'a1\'b4\'d3\'d5\'e2\'c0\'ef\'bf\'c9\'d2\'d4\'bf\'b4\'b3\'f6\'a3\'ac
+\f3 \'a0Door
+\f2 \'b5\'c4
+\f3 open() 
+\f2 \'a1\'a2
+\f3 close()
+\f2 \'ba\'cd
+\f3 alarm()
+\f2 \'b8\'f9\'b1\'be\'be\'cd\'ca\'f4\'d3\'da\'c1\'bd\'b8\'f6\'b2\'bb\'cd\'ac\'b7\'b6\'b3\'eb\'c4\'da\'b5\'c4\'d0\'d0\'ce\'aa\'a3\'ac
+\f3 open()
+\f2 \'ba\'cd
+\f3 close()
+\f2 \'ca\'f4\'d3\'da\'c3\'c5\'b1\'be\'c9\'ed\'b9\'cc\'d3\'d0\'b5\'c4\'d0\'d0\'ce\'aa\'cc\'d8\'d0\'d4\'a3\'ac\'b6\'f8
+\f3 alarm()
+\f2 \'ca\'f4\'d3\'da\'d1\'d3\'c9\'ec\'b5\'c4\'b8\'bd\'bc\'d3\'d0\'d0\'ce\'aa\'a1\'a3\
+      3)  \'d2\'f2\'b4\'cb\'d7\'ee\'ba\'c3\'b5\'c4\'bd\'e2\'be\'f6\'b0\'ec\'b7\'a8\'ca\'c7\'b5\'a5\'b6\'c0\'bd\'ab\'b1\'a8\'be\'af\'c9\'e8\'bc\'c6\'ce\'aa\'d2\'bb\'b8\'f6\'bd\'d3\'bf\'da\'a3\'ac\'b0\'fc\'ba\'ac
+\f3 alarm()
+\f2 \'d0\'d0\'ce\'aa
+\f3 ,Door
+\f2 \'c9\'e8\'bc\'c6\'ce\'aa\'b5\'a5\'b6\'c0\'b5\'c4\'d2\'bb\'b8\'f6\'b3\'e9\'cf\'f3\'c0\'e0\'a3\'ac\'b0\'fc\'ba\'ac
+\f3 open
+\f2 \'ba\'cd
+\f3 close
+\f2 \'c1\'bd\'d6\'d6\'d0\'d0\'ce\'aa\'a1\'a3\'d4\'d9\'c9\'e8\'bc\'c6\'d2\'bb\'b8\'f6\'b1\'a8\'be\'af\'c3\'c5\'bc\'cc\'b3\'d0
+\f3 Door
+\f2 \'c0\'e0\'ba\'cd\'ca\'b5\'cf\'d6
+\f3 Alarm
+\f2 \'bd\'d3\'bf\'da\'a1\'a3
+\f3 \cb1 \
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt\clvertalbase \clshdrawnil \clwWidth380\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt\clvertalbase \clshdrawnil \clwWidth10420\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf8 \cb9 1\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb2 2\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb9 3\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb2 4\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb9 5\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb2 6\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb9 7\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb2 8\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb9 9\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb2 10\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb9 11\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb2 12\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb9 13\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb2 14\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb9 15\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb2 16\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb9 17\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb2 18\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb9 19\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf8 \cb2 20\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf10 \cb9 interface\cf0  Alarm \{\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb2 \'a0\'a0\'a0\'a0\cf10 void\cf0  alarm();\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb9 \}\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb2 \'a0\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf10 \cb9 abstract\cf0  \cf10 class\cf0  Door \{\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb2 \'a0\'a0\'a0\'a0\cf10 void\cf0  open();\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb9 \'a0\'a0\'a0\'a0\cf10 void\cf0  close();\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb2 \}\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb9 \'a0\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf10 \cb2 class\cf0  AlarmDoor \cf10 extends\cf0  Door \cf10 implements\cf0  Alarm \{\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb9 \'a0\'a0\'a0\'a0\cf10 void\cf0  open() \{\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb2 \'a0\'a0\'a0\'a0\'a0\'a0\cf11 //....\cf0 \
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb9 \'a0\'a0\'a0\'a0\}\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb2 \'a0\'a0\'a0\'a0\cf10 void\cf0  close() \{\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb9 \'a0\'a0\'a0\'a0\'a0\'a0\cf11 //....\cf0 \
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb2 \'a0\'a0\'a0\'a0\}\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb9 \'a0\'a0\'a0\'a0\cf10 void\cf0  alarm() \{\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb2 \'a0\'a0\'a0\'a0\'a0\'a0\cf11 //....\cf0 \
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb9 \'a0\'a0\'a0\'a0\}\
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cb2 \}\
+https://www.cnblogs.com/dolphin0520/p/3811437.html\cell \lastrow\row
+}

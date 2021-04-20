@@ -1,0 +1,142 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red14\green13\blue13;\red255\green255\blue255;\red163\green217\blue121;
+\red0\green0\blue0;\red0\green0\blue0;\red83\green83\blue83;}
+{\*\expandedcolortbl;;\cssrgb\c6275\c5882\c5490;\cssrgb\c100000\c100000\c100000;\cssrgb\c69337\c86836\c54718;
+\csgray\c0\c0;\cssrgb\c0\c0\c0;\cssrgb\c40000\c40000\c40000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww22540\viewh14100\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\i\fs32 \cf2 \cb3 \expnd0\expndtw0\kerning0
+1.2
+\i0  Design Goals of the Java 
+\fs26\fsmilli13333 \super TM 
+\fs32 \nosupersub Programming Language\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\fs26 \cf2 \cb3 The design requirements of the Java \super TM \nosupersub programming language are driven by the nature of the computing environments in which software must be deployed.\cb1 \
+\cb3 The massive growth of the Internet and the World-Wide Web leads us to a completely new way of looking at development and distribution of software. To live in the world of electronic commerce and distribution, Java technology must enable the development of 
+\i secure, high performance,
+\i0  and highly 
+\i robust
+\i0  applications on 
+\i multiple platforms
+\i0  in 
+\i heterogeneous
+\i0 , 
+\i distributed
+\i0  
+\i networks
+\i0 .\cb1 \
+\cb3 Operating on multiple platforms in heterogeneous networks invalidates the traditional schemes of binary distribution, release, upgrade, patch, and so on. To survive in this jungle, the Java programming language must be 
+\i architecture neutral
+\i0 , 
+\i portable
+\i0 , and 
+\i dynamically adaptable
+\i0 .\cb1 \
+\cb3 The system that emerged to meet these needs is 
+\i simple
+\i0 , so it can be easily programmed by most developers; 
+\i familiar
+\i0 , so that current developers can easily learn the Java programming language; 
+\i object oriented
+\i0 , to take advantage of modern software development methodologies and to fit into distributed client-server applications; 
+\i multithreaded
+\i0 , for high performance in applications that need to perform multiple concurrent activities, such as multimedia; and 
+\i interpreted
+\i0 , for maximum portability and dynamic capabilities.\cb1 \
+\cb3 Together, the above requirements comprise quite a collection of buzzwords, so let's examine some of them and their respective benefits before going on.\cb1 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\i\fs28 \cf2 \cb3 1.2.1
+\i0  Simple, Object Oriented, and Familiar\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\fs26 \cf2 \cb3 Primary characteristics of the Java programming language include a 
+\i simple
+\i0  language that can be programmed without extensive programmer training while being attuned to current software practices. The fundamental concepts of Java technology are grasped quickly; programmers can be productive from the very beginning.\cb1 \
+\cb4 The Java programming language is designed to be 
+\i object oriented
+\i0  from the ground up.\cb3  Object technology has finally found its way into the programming mainstream after a gestation period of thirty years. The needs of distributed, client-server based systems coincide with the encapsulated, \cb4 message-passing paradigms\cb3  of object-based software. To function within increasingly complex, network-based environments, programming systems must adopt object-oriented concepts. Java technology provides a clean and efficient object-based development platform.\cb1 \
+\cb3 Programmers using the Java programming language can access existing libraries of tested objects that provide functionality ranging from basic data types through I/O and network interfaces to graphical user interface toolkits. These libraries can be extended to provide new behavior.\cb1 \
+\cb3 Even though C++\cb5  was rejected as an implementation language, keeping the Java programming language \cf6 looking like C++ as far as possible\cf2  results in it being a 
+\i familiar
+\i0  language, while removing the unnecessary complexities of C++. Having the Java programming language retain many of the object-oriented features and \cb4 the "look and feel" of C++\cb5  means that programmers can migrate easily to the Java platform and be productive quickly.\
+\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\i\fs28 \cf2 \cb3 1.2.2
+\i0  Robust and Secure\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\fs26 \cf2 \cb3 The Java programming language is designed for creating highly 
+\i reliable
+\i0  software. It provides extensive compile-time checking, followed by a second level of run-time checking. Language features guide programmers towards reliable programming habits.\cb1 \
+\cb4 The memory management model is extremely simple\cb3 : \cb4 objects are created with a 
+\f1 \cf7 new
+\f0 \cf2  operator.\cb3  There are no explicit programmer-defined pointer data types, no pointer arithmetic, and automatic garbage collection. This simple memory management model eliminates entire classes of programming errors that bedevil C and C++ programmers. You can develop Java code with confidence that the system will find many errors quickly and that major problems won't lay dormant until after your production code has shipped.\cb1 \
+\cb4 Java technology is designed to operate in distributed environments,\cb3  which means that 
+\i security
+\i0  is of paramount importance. With security features designed into the language and run-time system, Java technology lets you construct applications that can't be invaded from outside. In the network environment, applications written in the Java programming language are secure from intrusion by unauthorized code attempting to get behind the scenes and create viruses or invade file systems.\cb1 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\i\fs28 \cf2 \cb3 1.2.3
+\i0  Architecture Neutral and Portable\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\fs26 \cf2 \cb3 Java technology is designed to support applications that will be deployed into heterogeneous network environments. In such environments, applications must be capable of executing on a variety of hardware architectures. Within this variety of hardware platforms, applications must execute atop a variety of operating systems and interoperate with multiple programming language interfaces. \cb4 To accommodate the diversity of operating environments, the Java Compiler product generates 
+\i bytecodes
+\i0 --an 
+\i architecture neutral
+\i0  intermediate format designed to transport code efficiently to multiple hardware and software platforms.\cb3  The interpreted nature of Java technology solves both the binary distribution problem and the version problem; the same Java programming language byte codes will run on any platform.\cb1 \
+\cf6 \cb4 Architecture neutrality is just one part of a truly 
+\i portable
+\i0  system.\cf2 \cb3  Java technology takes portability a stage further by being strict in its definition of the basic language. Java technology puts a stake in the ground and specifies the sizes of its basic data types and the behavior of its arithmetic operators. Your programs are the same on every platform--there are no data type incompatibilities across hardware and software architectures.\cb1 \
+\cb4 The architecture-neutral and portable language platform of Java technology is known as the 
+\i Java virtual machine
+\i0 .\cb3  It's the specification of an abstract machine \cb4 for which Java programming language compilers can generate code\cb3 . Specific implementations of the Java virtual machine for specific hardware and software platforms then provide the concrete realization of the virtual machine. The Java virtual machine is based primarily on the POSIX interface specification--an industry-standard definition of a portable system interface. Implementing the Java virtual machine on new architectures is a relatively straightforward task as long as the target platform meets basic requirements such as support for multithreading.\cb1 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\i\fs28 \cf2 \cb3 1.2.4
+\i0  High Performance\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\i\fs26 \cf2 \cb3 Performance
+\i0  is always a consideration. The Java platform achieves superior performance by adopting a scheme by which the interpreter can run at full speed without needing to check the run-time environment. The 
+\i \cf6 \cb4 automatic garbage collector
+\i0 \cf2 \cb3  runs as a low-priority background thread, ensuring a high probability that memory is available when required, leading to better performance. Applications requiring large amounts of compute power can be designed such that compute-intensive sections can be rewritten in native machine code as required and interfaced with the Java platform. In general, users perceive that interactive applications respond quickly even though they're interpreted.\cb1 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\i\fs28 \cf2 \cb3 1.2.5
+\i0  Interpreted, Threaded, and Dynamic\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\fs26 \cf2 \cb4 The 
+\i Java interpreter
+\i0  can execute Java bytecodes directly on any machine to which the interpreter and run-time system have been ported\cb3 . In an interpreted platform such as Java technology-based system, the link phase of a program is simple, incremental, and lightweight. You benefit from much faster development cycles--prototyping, experimentation, and rapid development are the normal case, versus the traditional heavyweight compile, link, and test cycles.\cb1 \
+\cb3 Modern network-based applications, such as the HotJava \super TM \nosupersub Browser for the World Wide Web, typically need to do several things at the same time. A user working with HotJava Browser can run several animations concurrently while downloading an image and scrolling the page. Java technology's 
+\i multithreading
+\i0  capability provides the means to build applications with many concurrent threads of activity. Multithreading thus results in a high degree of interactivity for the end user.\cb1 \
+\cb3 The Java platform supports multithreading at the language level with the addition of sophisticated synchronization primitives: the language library provides the 
+\f1 \cf7 Thread
+\f0 \cf2  class, and the run-time system provides monitor and condition lock primitives. At the library level, moreover, Java technology's high-level system libraries have been written to be 
+\i thread safe
+\i0 : 
+\i the functionality provided by the libraries is available without conflict to multiple concurrent threads of execution.
+\i0 \cb1 \
+
+\i \cb3 While the Java Compiler is strict in its compile-time static checking, the language and run-time system are dynamic in their linking stages. Classes are linked only as needed. New code modules can be linked in on demand from a variety of sources, even from sources across a network. In the case of the HotJava Browser and similar applications, interactive executable code can be loaded from anywhere, which enables transparent updating of applications. The result is on-line services that constantly evolve; they can remain innovative and fresh, draw more customers, and spur the growth of electronic commerce on the Internet.\cb1 \
+\
+
+\i0 \\}

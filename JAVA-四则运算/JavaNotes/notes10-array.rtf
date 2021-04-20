@@ -1,0 +1,130 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fnil\fcharset0 Monaco;\f2\fmodern\fcharset0 Courier;
+\f3\fnil\fcharset134 PingFangSC-Regular;\f4\fnil\fcharset0 AppleColorEmoji;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red255\green255\blue10;\red0\green0\blue0;
+\red255\green255\blue10;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c99942\c98555\c0;\cssrgb\c0\c0\c0;
+\cssrgb\c99942\c98555\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs34 \cf2 \expnd0\expndtw0\kerning0
+Declaring a Variable to Refer to an Array
+\b0\fs26 \cf0 \
+\
+The preceding program declares an array (named 
+\f1 anArray
+\f0 ) with the following line of code:\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 // declares an array of integers\
+int[] anArray;\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 \
+Like declarations for variables of other types, an array declaration has two components: the array's type and the array's name.\cb3  An array's type is written as 
+\f1 type[]
+\f0 , where 
+\f1 type
+\f0  is the data type of the contained elements; the brackets are special symbols indicating that this variable holds an array. The size of the array is not part of its type (which is why the brackets are empty).\cb1  \
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 As with variables of other types, the declaration does not actually create an array; it simply tells the compiler that this variable will hold an array of the specified type.\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs34 \cf2 Creating, Initializing, and Accessing an Array\
+
+\b0\fs26 \cf0 \
+One way to create an array is with the 
+\f1 new
+\f0  operator. \cb3 The next statement in the 
+\f1 ArrayDemo
+\f0  program allocates an array with enough memory for 10 integer elements and assigns the array to the 
+\f1 anArray
+\f0  variable.
+\f3 \'a2\'d9
+\f0 \cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 // create an array of integers\
+anArray = new int[10];\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 \
+If this statement is missing, then the compiler prints an error like the following, and compilation fails:\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 ArrayDemo.java:4: Variable anArray may not have been initialized.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 The next few lines assign values to each element of the array:\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 anArray[0] = 100; // initialize first element\
+anArray[1] = 200; // initialize second element\
+anArray[2] = 300; // and so forth\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 \
+Each array element is accessed by its numerical index:\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 System.out.println("Element 1 at index 0: " + anArray[0]);\
+System.out.println("Element 2 at index 1: " + anArray[1]);\
+System.out.println("Element 3 at index 2: " + anArray[2]);\
+\
+========
+\f4 \uc0\u11015 \u65039 
+\f2 \
+\
+
+\f3 \'a2\'d9
+\f2  
+\f0\b\fs28 \cf2 Literals\
+\pard\pardeftab720\partightenfactor0
+
+\b0\fs26 \cf0 \
+The eight primitive data types are: byte, short, int, long, float, double, boolean, and char.\
+\
+You may have noticed that the 
+\f1 \cb5 new
+\f0 \cb1  keyword isn't used when initializing a variable of a primitive type. \cb5 Primitive types are special data types built into the language; they are not objects created from a class. \cb1 \
+\
+\cb5 A 
+\i literal
+\i0  is the source code representation of a fixed value; literals are represented directly in your code without requiring computation.\cb1  As shown below, it's possible to assign a literal to a variable of a primitive type:\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 boolean result = true;\
+char capitalC = 'C';\
+byte b = 100;\
+short s = 10000;\
+int i = 100000;\
+\
+=========
+\f4 \uc0\u11014 \u65039 
+\f2 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 Alternatively, you can use the shortcut syntax to create and initialize an array:\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 int[] anArray = \{ \
+    100, 200, 300,\
+    400, 500, 600, \
+    700, 800, 900, 1000\
+\};\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 Here the length of the array is determined by the number of values provided between braces and separated by commas.}

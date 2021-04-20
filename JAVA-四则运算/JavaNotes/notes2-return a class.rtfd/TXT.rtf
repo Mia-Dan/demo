@@ -1,0 +1,85 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fnil\fcharset0 Monaco;\f2\fswiss\fcharset0 Helvetica;
+\f3\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red0\green0\blue0;\red128\green0\blue128;
+\red255\green255\blue10;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c0\c0\c0;\cssrgb\c57919\c12801\c57269;
+\cssrgb\c99942\c98555\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs34 \cf2 \expnd0\expndtw0\kerning0
+Returning a Class or Interface\
+\pard\pardeftab720\partightenfactor0
+
+\b0\fs26 \cf0 If this section confuses you, skip it and return to it after you have finished the lesson on interfaces and inheritance.\
+\
+When a method uses a class name as its return type, such as 
+\f1 whosFastest
+\f0  does, the class of the type of the returned object must be either a subclass of, or the exact class of, the return type. Suppose that you have a class hierarchy in which 
+\f1 ImaginaryNumber
+\f0  is a subclass of 
+\f1 java.lang.Number
+\f0 , which is in turn a subclass of 
+\f1 Object
+\f0 , as illustrated in the following figure.\
+\pard\pardeftab720\qc\partightenfactor0
+\cf0 {{\NeXTGraphic classes-hierarchy.gif \width2920 \height3060 \noorient \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\pardeftab720\qc\partightenfactor0
+\cf0 \
+\
+\pard\pardeftab720\qc\partightenfactor0
+
+\f2 \cf0 The class hierarchy for ImaginaryNumber\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 Now suppose that you have a method declared to return a 
+\f1 Number
+\f0 :\
+\pard\pardeftab720\partightenfactor0
+
+\f3 \cf0 public Number returnANumber() \{\
+       \cf4 class- \'97\'97\'97instance-\'97\'97\'97\cf0 \
+    ...\
+\}\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 The 
+\f1 returnANumber
+\f0  method can return an 
+\f1 ImaginaryNumber
+\f0  but not an 
+\f1 Object
+\f0 . 
+\f1 ImaginaryNumber
+\f0  is a 
+\f1 Number
+\f0  because it's a subclass of 
+\f1 Number
+\f0 . However, an 
+\f1 Object
+\f0  is not necessarily a 
+\f1 Number
+\f0  \'97 it could be a 
+\f1 String
+\f0  or another type.\
+\
+You can override a method and define it to return a subclass of the original method, like this:\
+\pard\pardeftab720\partightenfactor0
+
+\f3 \cf0 public ImaginaryNumber returnANumber() \{\
+    ...\
+\}\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 This technique, called 
+\i covariant return type
+\i0 , means that t\cb5 he return type is allowed to vary in the same direction as the subclass.\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\b \cf0 Note:
+\b0 \'a0\cb5 You also can use interface names as return types. In this case, the object returned must implement the specified interface. }

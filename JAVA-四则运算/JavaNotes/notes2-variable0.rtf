@@ -1,0 +1,156 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fnil\fcharset0 Monaco;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;\red205\green205\blue205;\red0\green0\blue0;\red255\green255\blue10;
+\red230\green230\blue230;\red38\green38\blue38;}
+{\*\expandedcolortbl;;\csgray\c84070;\cssrgb\c0\c0\c0;\cssrgb\c99942\c98555\c0;
+\csgray\c92143;\cssrgb\c20000\c20000\c20000;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf0 \expnd0\expndtw0\kerning0
+The Java programming language defines the following kinds of variables:\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\b \cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Instance Variables (Non-Static Fields)
+\b0  Technically speaking, objects store their individual states in "non-static fields", that is, fields declared without the 
+\f1 static
+\f0  keyword. Non-static fields are also known as 
+\i instance variables
+\i0  because their values are unique to each 
+\i instance
+\i0  of a class (to each object, in other words); the 
+\f1 currentSpeed
+\f0  of one bicycle is independent from the 
+\f1 currentSpeed
+\f0  of another.\
+\pard\tx566\pardeftab720\partightenfactor0
+\cf0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0
+\b \cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Class Variables (Static Fields)
+\b0  A 
+\i class variable
+\i0  is any field declared with the 
+\f1 static
+\f0  modifier; this tells the compiler that there is exactly one copy of this variable in existence, regardless of how many times the class has been instantiated. A field defining the number of gears for a particular kind of bicycle could be marked as 
+\f1 static
+\f0  since conceptually the same number of gears will apply to all instances. The code 
+\f1 static int numGears = 6;
+\f0  would create such a static field. Additionally, the keyword 
+\f1 final
+\f0  could be added to indicate that the number of gears will never change.\
+\pard\tx566\pardeftab720\partightenfactor0
+\cf0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0
+\b \cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Local Variables
+\b0  Similar to how an object stores its state in fields, a method will often store its temporary state in 
+\i local variables
+\i0 . The syntax for declaring a local variable is similar to declaring a field (for example, 
+\f1 int count = 0;
+\f0 ). There is no special keyword designating a variable as local; that determination comes entirely from the location in which the variable is declared \'97 which is between the opening and closing braces of a method. As such, local variables are only visible to the methods in which they are declared; they are not accessible from the rest of the class.\
+\pard\tx566\pardeftab720\partightenfactor0
+\cf0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls4\ilvl0
+\b \cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Parameters
+\b0  You've already seen examples of parameters, both in the 
+\f1 Bicycle
+\f0  class and in the 
+\f1 main
+\f0  method of the "Hello World!" application. Recall that the signature for the 
+\f1 main
+\f0  method is 
+\f1 public static void main(String[] args)
+\f0 . Here, the 
+\f1 args
+\f0  variable is the parameter to this method. The important thing to remember is that parameters are always classified as "variables" not "fields". This applies to other parameter-accepting constructs as well (such as constructors and exception handlers) that you'll learn about later in the tutorial.\
+\pard\tx566\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 Having said that, the remainder of this tutorial uses the following general guidelines when discussing fields and variables. If we are talking about "fields in general" (excluding local variables and parameters), we may simply say "fields". If the discussion applies to "all of the above", we may simply say "variables". If the context calls for a distinction, we will use specific terms (static field, local variables, etc.) as appropriate. You may also occasionally see the term "member" used as well. A type's fields, methods, and nested types are collectively called its 
+\i members
+\i0 .\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 When a number of objects are created from the same class blueprint, they each have their own distinct copies of 
+\i instance variables
+\i0 . In the case of the 
+\f1 Bicycle
+\f0  class, the instance variables are 
+\f1 cadence
+\f0 , 
+\f1 gear
+\f0 , and 
+\f1 speed
+\f0 . Each 
+\f1 Bicycle
+\f0  object has its own values for these variables, stored in different memory locations.\
+\
+Sometimes, you want to have variables that are common to all objects. This is accomplished with the 
+\f1 static
+\f0  modifier. Fields that have the 
+\f1 static
+\f0  modifier in their declaration are called 
+\i static fields
+\i0  or 
+\i class variables
+\i0 . \cb4 They are associated with the class, rather than with any object. Every instance of the class shares a class variable, which is in one fixed location in memory. Any object can change the value of a class variable, but class variables can also be manipulated without creating an instance of the class.\cb1 \
+\
+For example, suppose you want to create a number of 
+\f1 Bicycle
+\f0  objects and assign each a serial number, beginning with 1 for the first object. This ID number is unique to each object and is therefore an instance variable. At the same time, you need a field to keep track of how many 
+\f1 Bicycle
+\f0  objects have been created so that you know what ID to assign to the next one. \cb4 Such a field is not related to any individual object, but to the class as a whole.\cb1 \
+\
+Class variables are referenced by the class name itself, as in 
+\f2 Bicycle.numberOfBicycles\
+
+\f0 This makes it clear that they are class variables.\
+\pard\pardeftab720\partightenfactor0
+
+\b \cf5 * Note:
+\b0 \'a0You can also refer to static fields with an object reference like
+\f1 \
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf5 myBike.numberOfBicycles\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf5 but this is discouraged because it does not make it clear that they are class variables.\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs34 \cf6 Constants\
+\pard\pardeftab720\partightenfactor0
+
+\b0\fs26 \cf0 \
+The 
+\f1 static
+\f0  modifier, in combination with the 
+\f1 final
+\f0  modifier, is also used to define constants. The 
+\f1 final
+\f0  modifier indicates that the value of this field cannot change.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 static final double PI = 3.141592653589793;\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 If a primitive type or a string is defined as a constant and the value is known at compile time, the compiler replaces the constant name everywhere in the code with its value. This is called a 
+\i compile-time constant
+\i0 .}
