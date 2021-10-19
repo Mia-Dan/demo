@@ -130,7 +130,8 @@ def plotBegining():
     output = None
     '''
     global daysPast # UnboundLocalError: local variable 'daysPast' referenced before assignment
-    prompt = "\n\n\nNow, first LOOK around...\n"
+    print("\n\n\n")
+    prompt = "Now, first LOOK around...\n"
     action = input(prompt)
     # TODO：可以使用dictionary+exception实现switch。见，https://www.jianshu.com/p/e4d3cb75e532
     while action not in ["LOOK"]: action = msgIllegalEnter()
@@ -143,6 +144,7 @@ def plotSandDitch():
     output = either one of "LEFT" or "RIGHT"
     '''
     global daysPast
+    print("\n\n\n")
     plot = "You are stuck in a sand ditch."
     print(plot)
     prompt = "Crawl out LEFT or RIGHT.\n"
@@ -154,9 +156,10 @@ def plotSandDitch():
 
 def plotHunger():
     global daysPast
+    print("\n\n\n")
     print(f"It's {currentTime()}, and you're hungry!")
     print("You look around, and see a STARFISH and a CRAB on the sand.")
-    prompt = "Which do you eat?"
+    prompt = "Which do you eat?\n"
     action = input(prompt).strip()
     while action not in ["STARFISH", "CRAB"]: action = msgIllegalEnter() 
     choiceSaver(action)
@@ -165,7 +168,8 @@ def plotHunger():
 
 def plotReconsider():
     global daysPast
-    prompt = "Raw crab should be fine, right? YES or NO."
+    print("\n\n\n")
+    prompt = "Raw crab should be fine, right? YES or NO.\n"
     action = input(prompt).strip()
     while action not in ["YES", "NO"]: action = msgIllegalEnter()
     choiceSaver(action)
@@ -174,8 +178,9 @@ def plotReconsider():
 
 def plotFindTree():
     global daysPast
+    print("\n\n\n")
     print("Ok, You eat it raw. Fingers crossed.")
-    prompt = "Food in your belly helps you see a TREE."
+    prompt = "Food in your belly helps you see a TREE.\n"
     action = input(prompt).strip()
     while action not in ["TREE"]: action = msgIllegalEnter() 
     choiceSaver(action)
@@ -184,8 +189,9 @@ def plotFindTree():
 
 def plotCoconut():
     global daysPast
+    print("\n\n\n")
     print("It's a coconut tree! And you're thirsty!")
-    prompt = "Do you drink the coconut water? YES OR NO."
+    prompt = "Do you drink the coconut water? YES OR NO.\n"
     action = input(prompt).strip()
     while action not in ["YES", "NO"]: action = msgIllegalEnter()
     choiceSaver(action)
@@ -200,33 +206,40 @@ def msgNotCoconut():
 
 
 # --- 结局 ---
+# input = None, output = None
 def endShip():
     '''
     input = None
-    output = either one of "LEFT" or "RIGHT"
+    output = None
     '''
-    print("\n\n\nYou make it out and see a ship!")
+    print("\n\n\n")
+    print("You make it out and see a ship!")
     print("You survived!")
 
 def endCave():
-    print("\n\n\nNo can do. That side is very slippery.")
+    print("\n\n\n")
+    print("No can do. That side is very slippery.")
     print("You fall very far into some weird cavern.")
     print("You do not survive :(")
 
 def endStarfish():
+    print("\n\n\n")
     print("Oh no! You immediately don't feel well.")
     print("You do not survive :(")
 
 def endHunger():
+    print("\n\n\n")
     print("Well, there's nothing else left to eat.")
     print("You do not survive :(")
 
 def endCrabAndCoconut():
+    print("\n\n\n")
     print("Oh boy. Coconut water and raw crab don't mix.")
     print("You do not survive :(")
 
 def endRescurePlane():
-    print("Look! It's a rescue plane! You made it! \o/")
+    print("\n\n\n")
+    print("Look! It's a rescue plane! You made it! \\o/")
 
 
 # --- 主要游戏逻辑 ---
@@ -245,33 +258,32 @@ def game():
 
     # Plots
     action = plotSandDitch() 
-    if action == "RIGHT": 
-        endCave() # return
-        return
+    if action == "RIGHT": return endCave() # remember endCave() returns nothing
     # action == "LEFT": 
     action = plotHunger()
-    if action == "STARFISH":
-        endStarfish()
-        return
+    if action == "STARFISH": return endStarfish()
     # action == "CRAB"
     action = plotReconsider()
-    if action == "NO":
-        endHunger()
-        return
+    if action == "NO": return endHunger()
     # action == "YES"
     plotFindTree() # no branch in this section
     action = plotCoconut()
-    if action == "YES":
-        endCrabAndCoconut()
-        return
+    if action == "YES": return endCrabAndCoconut()
     # action == "NO"
-    plotNotCoconut()
+    msgNotCoconut()
     endRescurePlane()
+
+
+# TODO: 给定actionSeq，自动执行这一串action
+# --- 平行世界 ---
+def AUTraveller(artificailActionSeq):
+    pass
+
 
 # --- 主函数 ---
 while(1):
     game()
-    print(actionSeq)
+    print(f"\nActions {pcInfo['name']} took in this adventure: {actionSeq}")
     if ifRestrat() == 'NO': exit()
 
 
