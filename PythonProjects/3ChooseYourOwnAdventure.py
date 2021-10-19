@@ -9,6 +9,8 @@
 # PL: player
 # plot: game plot
 
+import time
+
 pcInfo = {}
 actionSeq = [] # record the sequence of action taken
 # TODO: if pl want to redo this choice, just delete the last one in actionSeq and run the game instead.
@@ -23,15 +25,20 @@ daysPast = 0
 
 # --- 基本功能组件 ---
 # basic functions
-def msgIllegalEnter():
+def msgIllegalEnter(count=0, optList=''):
     '''
     used as following:
     while action not in validEnterList: 
         action = msgIllegalEnter() # illegal enter, try again
-    TODO: refactor this function into reEnterIfInputNotValid(validEnterList)
+
+    When not given count&optList, this function act as the previous version, namely:
+        show error message regardless of count of illegal enters.
+
+    TODO: 
+    1. refactor this function into reEnterIfInputNotValid(validEnterList)
+    2. rename msgSoManyIllegalEnters() into msgIllegalEnter()
     '''
-    print("You can only do actions shown in capital letters.")
-    print("Try again!")
+    msgSoManyIllegalEnters(count, optList)
     action = input("")
     return action
 
@@ -75,6 +82,7 @@ def currentTime():
     else:
         dayPeriod = 'night'
     return dayPeriod
+
 
 # --- 角色设定 ---
 # get Player Character information
@@ -134,7 +142,8 @@ def plotBegining():
     prompt = "Now, first LOOK around...\n"
     action = input(prompt)
     # TODO：可以使用dictionary+exception实现switch。见，https://www.jianshu.com/p/e4d3cb75e532
-    while action not in ["LOOK"]: action = msgIllegalEnter()
+    countIllegalEnter = 0
+    while action not in ["LOOK"]: countIllegalEnter+=1; action = msgIllegalEnter(countIllegalEnter, ["LOOK"])
     choiceSaver(action)
     daysPast += 0
 
@@ -199,10 +208,58 @@ def plotCoconut():
     return action
 
 
-# --- 选项回音 ---
+# --- 选项回音 --- / feedback / comment %%% - which word to use?
 # messages as a respondence to choice
 def msgNotCoconut():
     print("Good choice.")
+
+
+def msgSoManyIllegalEnters(count, optList):
+    '''Print something (doesn't accumulate through different section)
+    input: 
+    count[int] - count of illegal enters in a single dialog
+    optList[list of str] - a list of all options available
+    '''
+    # TODO: could that be caused by some hidden bugs in program? 
+    # - Perhaps I should add a "report a bug" choice in this function
+
+    optStr = ""
+    if len(optList) == 1: optStr = 'a ' + optList[0]
+    elif len(optList) == 2: optStr = f'a {optList[0]} or a {optList[1]}'
+    elif len(optList) > 2: optStr = 'one of ' + ', '.join(optList)
+
+    msg = "You can only do actions shown in capital letters.\n"
+    msg += "Try again:"
+
+    if count < 4: 
+        
+        print("*Sigh*",end='')
+        time.sleep(1)
+        print(f"Alright, {pcInfo['name']}, type whatever you want.")
+        time.sleep(0.3)
+        print("I won't say anything from now on.")
+        msg = ""
+
+    elif count == 4:
+        msg = "Okay, I get it. You don't like following rules.\n"
+        msg += "That's why you're on this adventure!\n"
+        msg += f"But I'm going to need {optStr} to go forward anyway."
+
+    elif count == 6:
+        msg = f"Please, you're giving me a headache. {optStr} only."
+
+    elif count == 10: 
+        print("*Sigh*",end='')
+        time.sleep(1)
+        print(f"Alright, {pcInfo['name']}, type whatever you want.")
+        time.sleep(0.3)
+        print("I won't say anything from now on.")
+        msg = ""
+
+    elif count > 10:
+        msg = "Illegal enter. Try again:"
+    
+    print(msg)
 
 
 # --- 结局 ---
