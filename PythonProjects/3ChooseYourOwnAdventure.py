@@ -232,7 +232,8 @@ def msgSoManyIllegalEnters(count, optList):
     msg += "Try again:"
 
     if count < 4: 
-        
+        #pass
+        # test TBC
         print("*Sigh*",end='')
         time.sleep(1)
         print(f"Alright, {pcInfo['name']}, type whatever you want.")
@@ -249,6 +250,7 @@ def msgSoManyIllegalEnters(count, optList):
         msg = f"Please, you're giving me a headache. {optStr} only."
 
     elif count == 10: 
+        # test TBC
         print("*Sigh*",end='')
         time.sleep(1)
         print(f"Alright, {pcInfo['name']}, type whatever you want.")
