@@ -2,40 +2,48 @@ import time
 import os
 import random
 
-# TODO: 雨滴函数化。对每个雨滴，输入初始位置，当前时刻；输出图案。
-picWidth, picHeight = 100, 20
-numRainDrops = 27
-# char, example: '■',' ','❄️'
-charBG = ' ' # background char
-charFG = '❄️' # foreground char
-pic = (charBG*picWidth + "\n")* picHeight # (picWidth+1) characters per row
-rowWidth = picWidth+1
-numFrames = 30 # 30 frames in total
+def initRain(numRainDrops, rowWidth, picHeight):
+    # Constraints: picWidth > numRainDrops
+    initPosiRainDrops = random.sample(range(1,picWidth+1), numRainDrops) # sampling without replacement
+    initIndexRainDrops = [initPosiRainDrop - random.choice(range(picHeight)) * rowWidth for initPosiRainDrop in initPosiRainDrops]
+    return initIndexRainDrops
 
-initPosiRainDrops = random.sample(range(1,picWidth+1), numRainDrops) # do not repeat 
-initIndexRainDrops = [initPosiRainDrop - random.choice(range(picHeight)) * rowWidth for initPosiRainDrop in initPosiRainDrops]
-
-for i in range(numFrames):
-    os.system('clear')
-    level = i%picHeight
-    tmpListFrame = list(pic)
-
+def addRain(initIndexRainDrops, rowWidth, picHeight, tmpListFrame, i):
+    level = i % picHeight
     for initIndexRainDrop in initIndexRainDrops:
-        # nope, frame[3+level*30] = "-" -> str is immutable in py
-        objIndex = initIndexRainDrop+level*(rowWidth-1) # Raining in the wind
-
-        # Avoid replacing "LR" 
-        isObjAtLR = ((objIndex%(picWidth+1)) == picWidth)  
-        isObjWaitting = objIndex<0
+        objIndex = initIndexRainDrop + level * (rowWidth - 1) # Raining in the wind
+        isObjAtLR = ((objIndex % (picWidth + 1)) == picWidth)  
+        isObjWaitting = (objIndex < 0)
         if isObjAtLR or isObjWaitting: 
             pass
         else: 
-            # frame = pic[:3+level*30] + ' ' + pic[3+level*30+1:]
             tmpListFrame[objIndex] = charFG
+
+# TODO: 雨滴函数化。对每个雨滴，输入初始位置，当前时刻；输出图案。
+picWidth, picHeight = 50, 10
+mode = "rain"
+numRainDrops = 27
+# char example: '■',' ','❄️'
+charBG = ' ' # background char
+charFG = '💧' # foreground char
+numFrames = 30 # 30 frames in total
+timeEachFrame = 0.3 # each frame last xx s
+pic = (charBG * picWidth + "\n") * picHeight 
+rowWidth = picWidth + 1 # (picWidth+1) characters per row
+
+if mode == "rain": 
+    initIndexRainDrops = initRain(numRainDrops, rowWidth, picHeight)
+
+for i in range(numFrames):
+    os.system('clear')
+    tmpListFrame = list(pic)
+
+    if mode == "rain": 
+        addRain(initIndexRainDrops, rowWidth, picHeight, tmpListFrame, i)
+
     frame = ''.join(tmpListFrame)
-    # print(objIndex)
     print(frame)
-    time.sleep(0.3)
+    time.sleep(timeEachFrame)
 
 
 
