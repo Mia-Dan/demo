@@ -7,22 +7,13 @@ picWidth, picHeight = 100, 20
 numRainDrops = 27
 # char, example: '■',' ','❄️'
 charBG = ' ' # background char
-charFG = '🐱' # foreground char
+charFG = '❄️' # foreground char
 pic = (charBG*picWidth + "\n")* picHeight # (picWidth+1) characters per row
 rowWidth = picWidth+1
 numFrames = 30 # 30 frames in total
 
 initPosiRainDrops = random.sample(range(1,picWidth+1), numRainDrops) # do not repeat 
-# #initDelayRainDrops = random.choice(list(range(int(picHeight/2))), numRainDrops) # could repeat
-# initDelayRainDrops = random.choice([1,2,3]) # could repeat
-
-initIndexRainDrops = []
-for initPosiRainDrop in initPosiRainDrops:
-    frameDelay = random.choice(range(picHeight))
-    print(frameDelay)
-    initIndexRainDrop = initPosiRainDrop - frameDelay * rowWidth 
-    initIndexRainDrops.append(initIndexRainDrop)
-print(initIndexRainDrops)
+initIndexRainDrops = [initPosiRainDrop - random.choice(range(picHeight)) * rowWidth for initPosiRainDrop in initPosiRainDrops]
 
 for i in range(numFrames):
     os.system('clear')
