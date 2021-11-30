@@ -4,6 +4,8 @@ import time
 # ------ input ------
 
 # TODO: allow whitespace in filepath.
+# TODO: debug - what is it when nothing entered? '' or b''?
+
 def dragFileHere():
     ''' Ask user to drag a file into Terminal.
         * Currently, NO whitespace is allowed in filepath.
@@ -12,9 +14,23 @@ def dragFileHere():
         If nothing is dragged in, return None.
     '''
     filepath = input("Drag your file below:\n").strip() # Dragings are likely to leave a whitespace at end
-    if filepath == b'': # NOTE: not '', but b''.
-        print("Nothing Entered.")
+    print(filepath)
+
+    # This works today. 20211129
+    if not filepath:  # Python takes empty str as False
+        print("Nothing Entered. [1]")
         return
+
+    # #BUG?? It worked yesterday, but failed today? 20211129
+    # if filepath == b'': # NOTE: not '', but b''. 
+    #     print("Nothing Entered.")
+    #     return
+
+    # This works today. 20211129
+    # if filepath == '':  
+    #     print("Nothing Entered. [2]")
+    #     return
+
     return filepath
 
 
@@ -48,16 +64,16 @@ def displayLinesByChar(strLines, periodCh=0.1, periodLine=0.3):
         time.sleep(periodLine)
 
 # dragFileHere() - Test Cases
-# dragFileHere()
+dragFileHere()
 # drag nothing
 # drag file without whitespaces 
 # drag file with whitespaces ❌
 
-# displayLineByChar() - Test Cases
-displayLineByChar("")
-displayLineByChar("Hello World!")
-displayLineByChar("Loading...", period=0.2)
+# # displayLineByChar() - Test Cases
+# displayLineByChar("")
+# displayLineByChar("Hello World!")
+# displayLineByChar("Loading...", period=0.2)
 
-# displayLinesByChar() - Test Cases
-displayLinesByChar("Hello World!")
-displayLinesByChar("1st line... \n2nd line...\n3rd line.")
+# # displayLinesByChar() - Test Cases
+# displayLinesByChar("Hello World!")
+# displayLinesByChar("1st line... \n2nd line...\n3rd line.")
