@@ -1,0 +1,64 @@
+exclusive
+
+stochastic
+
+benchmark // standard / reference point
+
+Get Programming: Learn to Code with Python is intended for anyone who is curious about programming but doesn’t necessarily want to pursue a career in it. It doesn’t assume any programming experience. You should be familiar with the following ideas:
+
+Variables—Readers who have taken a math course that deals with introductory algebra know what a variable is. This book explains h
+
+quantitive
+
+paradigm
+
+separate 
+
+spectral 
+
+subjective
+
+objective
+
+stochastic // randomly determined; may have statistical pattern but can’t be predicted precisely
+
+defer
+
+acronym
+
+scenario
+
+optimal
+
+bibliography
+
+eigen-    characteristic, {own}
+
+cont'd continued
+
+by some margin
+amplitude
+argument
+eqn = equation
+mutation
+argument
+witty 
+wit 
+refined 
+prohibit 
+unexceptionable 
+ad hoc 
+integrity 
+deck
+template 
+[finite]
+excessive
+intricate
+faint
+ditto
+reassuring 
+ubiquitous 
+column 
+decent
+
+
