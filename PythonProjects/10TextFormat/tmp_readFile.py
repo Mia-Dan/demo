@@ -23,38 +23,32 @@ EP      Ending Page
 # # outputFilepath = "formatted.txt"
 # outputFilepath = "aaa2.txt"
 # act = 'reorder'
-filepath = "formatted.txt"
-act = 'wos2gb'
-# act = 'deduplicate'
-filepath = "aaa.txt"
+# filepath = "formatted.txt"
+# act = 'wos2gb'
+# # act = 'deduplicate'
+# filepath = "aaa.txt"
 
 
 targetKeys = ['PT', 'AU', 'TI', 'SO', 'VL', 'IS', 'BP', 'EP', 'PY']
 pb = {}
 key = ''
 
+
 def formatPb(pb):
-    ''' Format one dictionary -> GB/T 7714—2005 bibliography
-    Example: Kanamori H．Shaking without quaking[J]．Science，1998，279(5359)：2063-2064．
-    '''
-    # BUG: reorganize code. test missing -> behavior under different missing
-    if 'IS' not in pb:
-        return f"{pb['AU']}. {pb['TI']}[{pb['PT']}]. {pb['SO']}, {pb['PY']}, {pb['VL']}: {pb['BP']}-{pb['EP']}.\n"
-    else:
-        for k in targetKeys:
-            if not k in pb:
-                print(f"'{pb['TI']}' value missing: {k}")
-                pb[k] = ''
-                # return "\n"
-        return f"{pb['AU']}. {pb['TI']}[{pb['PT']}]. {pb['SO']}, {pb['PY']}, {pb['VL']}({pb['IS']}): {pb['BP']}-{pb['EP']}.\n"
-  
+    ''' Format one publication info [dict] -> GB/T 7714—2005 bibliography [str]
+    Example: Kanamori H．Shaking without quaking[J]．Science，1998，279(5359)：2063-2064．'''
+    for k in targetKeys:
+        if not k in pb:
+            print(f"'{pb['TI']}' value missing: {k}")
+            pb[k] = '%%%' # 
+    return f"{pb['AU']}. {pb['TI']}[{pb['PT']}]. {pb['SO']}, {pb['PY']}, {pb['VL']}({pb['IS']}): {pb['BP']}-{pb['EP']}.\n"
+
 def formatValue(key, raw):
-    if key == 'AU':
-        return formatAU(raw)
-    if key == 'TI':
-        return formatTI(raw)
-    else: 
-        return raw
+    ''' Format each attribute
+    Example: ADAPTIVITY CHALLENGES IN GAMES AND SIMULATIONS: A SURVEY -> Adaptivity Challenges in Games and Simulations: A Survey'''
+    if key == 'AU': return formatAU(raw)
+    # if key == 'TI': return formatTI(raw)
+    else: return raw
 
 def appendValue(pb, key, valueField):
     if key == 'AU':
@@ -81,9 +75,16 @@ def formatAU(au):
     # print(au)
     return au
 
-def formatTI(raw):
-    # TODO: Capitalize(Aaa Bbb, not AAA BBB)
-    return raw
+# def formatTI(raw):
+#     lowerList = ['and', 'in', 'or']
+#     words = raw.split(' ')
+#     for i, word in enumerate(words):
+#         if word in lowerList:
+#             words[i] = word.lower()
+#         else:
+#             words[i] = word.capitalize()
+#     raw = ' '.join(words)
+#     return raw
 
 def clearFileContent(filepath):
     with open(filepath,'w') as fOut:
