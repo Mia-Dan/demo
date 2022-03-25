@@ -1,7 +1,8 @@
 from cmdUI import formatDraggedpath, dragFileHere, inputChoice
 from PyPDF2 import PdfFileWriter, PdfFileReader
+import re
 import typing
-from typing import List
+from typing import List, Callable
 '''
 method PdfFileReader.getPage(i): i begins at zero
 '''
@@ -24,11 +25,11 @@ def input2Pages(inputStr: str) -> List[int]: # x -> add pages in order
             pass
             # ??? no idea for now
         elif '-' in inStr:
-            # re TODO
-            appendPageRange(startPage, endPage, pages)
-        elif 1: # re TODO  
-            # re TODO  
-            appendPage(int(inStr), pages)
+            [startP, endP] = inStr.split('-')
+            startP, endP = int(startP), int(endP)
+            appendPRange(startP, endP, pages)
+        elif 1: 
+            appendP(int(inStr), pages)
     return pages
 
 def movePages(inputStr: str) -> List[int]:
@@ -42,16 +43,16 @@ def movePages(inputStr: str) -> List[int]:
     return pages
 
 
-def appendPage(page, pages) -> List[int]:
+def appendP(page, pages) -> List[int]:
     pages.append(page)
 
-def appendPageRange(startPage, endPage, pages):
-    morePages = list(range(startPage, endPage+1))
+def appendPRange(startP, endP, pages):
+    morePages = list(range(startP, endP+1))
     pages.extend(morePages)
 
 # operations: 
 # return page maps: new -> raw, under each operations 
-def getOp(op: str): # return a function obj
+def getOp(op: str) -> Callable[[List[int]], List[int]]: # return a function obj
     opDict = {
         "select": selectP,
         "delete": deleteP,
@@ -130,6 +131,7 @@ outputFilePath = '/Users/admin/Downloads/auto.pdf'
 writer = PdfFileWriter()
 addToWriter(reader, writer, pages)
 with open(outputFilePath,"wb") as outputFile: writer.write(outputFile)
+print("Finish! 🍺")
 
 # # EDIT
 # inputFilePath = r'''
@@ -140,8 +142,8 @@ with open(outputFilePath,"wb") as outputFile: writer.write(outputFile)
 
 '''
 # # A. selectPages ----------------------------------------
-# startPage = 1 # 开始页，第一页
-# endPage = 245 # 截止页，最后一页
+# startP = 1 # 开始页，第一页
+# endP = 245 # 截止页，最后一页
 
 # # B. movePages ------------------------------------------
 # pagesSrcs = [4,5,6]
@@ -158,7 +160,7 @@ reader = PdfFileReader(open(inputFilePath, "rb"))
 nPages = reader.getNumPages()
 
 # EDIT
-# selectPages(reader, writer, startPage, endPage)
+# selectPages(reader, writer, startP, endP)
 # movePages(reader, writer, pagesSrcs, pagesDest)
 deletePages2(reader, writer, pagesToDelete2)
 
