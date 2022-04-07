@@ -7,7 +7,7 @@ from typing import List, Callable
 method PdfFileReader.getPage(i): i begins at zero
 '''
 
-# Haven't tested. Just ran through the "select" op.
+# Haven't tested. Just ran through the "select", "customize" op.
 
 # Deals with input pages like "2,3,6-10,99,1". 
 # Shan't break input order.
@@ -17,18 +17,17 @@ def input2Pages(inputStr: str) -> List[int]: # x -> add pages in order
     '''* Translates input str like (select)"2,3, 6-10,99,1" 
     into a list [2,3,6,7,8,9,10,99,1]
     '''
-    inputStr = inputStr.replace(' ','')
-    inputs = inputStr.split(',')
+    inputs = inputStr.replace(' ','').split(',')
     pages = []
     for inStr in inputs:
         if '->' in inStr:
-            pass
-            # ??? no idea for now
+            pass # ??? no idea for now
         elif '-' in inStr:
-            [startP, endP] = inStr.split('-')
+            [startP, endP] = inStr.split('-') # should move into appendPRange, for '->' cases
             startP, endP = int(startP), int(endP)
             appendPRange(startP, endP, pages)
-        elif 1: 
+        else:
+            assert inStr.isdigit()
             appendP(int(inStr), pages)
     return pages
 
@@ -46,6 +45,7 @@ def movePages(inputStr: str) -> List[int]:
 def appendP(page, pages) -> List[int]:
     pages.append(page)
 
+# def appendPRange(rangeStr, pages):
 def appendPRange(startP, endP, pages):
     morePages = list(range(startP, endP+1))
     pages.extend(morePages)
@@ -57,7 +57,8 @@ def getOp(op: str) -> Callable[[List[int]], List[int]]: # return a function obj
         "select": selectP,
         "delete": deleteP,
         "move": moveP,
-        "impose": imposeP
+        "impose": imposeP,
+        "customize": customizeP
     }
     return opDict[op]
 
@@ -91,6 +92,9 @@ def imposeP(imposePattern: List[int]) -> List[int]:
 def moveP(pages: List[int]) -> List[int]:
     return pages
 
+def customizeP(pages: List[int]) -> List[int]:
+    ''' ... '''
+    return pages
 
 
 # add to writer
@@ -122,15 +126,18 @@ print()
 inputFilePath = dragFileHere()
 reader = PdfFileReader(open(inputFilePath, "rb"))
 nPages = reader.getNumPages()
+
 print()
-op = inputChoice(choices=['select','delete','move','impose'])
+op = inputChoice(choices=['select','delete','move','impose','customize'])
 inputP = input2Pages(input("Then args: "))
 pages = getOp(op)(inputP)
+
 print()
 outputFilePath = '/Users/admin/Downloads/auto.pdf'
 writer = PdfFileWriter()
 addToWriter(reader, writer, pages)
 with open(outputFilePath,"wb") as outputFile: writer.write(outputFile)
+
 print("Finish! 🍺")
 
 # # EDIT
