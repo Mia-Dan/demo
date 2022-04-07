@@ -3,29 +3,54 @@ import time
 import os
 # ------ input ------
 
-# TODO: allow whitespace in filepath.
+# TODO: support Chinese. 
+# UnicodeDecodeError: 'utf-8' codec can't decode ...
 # TODO: debug - what is it when nothing entered? '' or b''?
 
-# last success ver
-def dragFileHere():
-    ''' Ask user to drag a file into Terminal.
-        * Currently, NO whitespace is allowed in filepath.
+# failed
+def dragFileHere(filepath=''): #T: filepath accepts value only when tesing.
+    ''' Ask user to drag a file into Terminal, and return its formatted filepath, 
+    which can be directly used in futher code, like open(filepath).
+
     Returns:
-        If a file is dragged in, return its filepath(str).
+        Return its formatted filepath(str), to be directly used in open(filepath).
         If nothing is dragged in, return None.
+
+    # usage note
+    1. May use with
+        if not mp4Filename: time.sleep(1); quit() # in case dragFileHere() failed
     '''
-    filepath = input("Drag your file below:\n").strip() # Dragings are likely to leave a whitespace at end
-    if not filepath:  # Python takes empty str as False
-        print("Nothing Entered. [1]")
-        return
-    # Formatting dragged-in filepath
-    filepath = filepath.replace('\\ ', ' ') # Deal with whitespaces
-    # print(filepath) #T
-    # print(os.path.isfile(filepath)) #T 
-    # /Users/admin/Downloads/how\ to\ learn.rtf ❌; ✅ /Users/admin/Downloads/how to learn.rtf
-    with open(filepath) as f:
-        print(f.read())
+    while (not filepath):
+        filepath = input("Enter/Drag your filepath here 📁:\n")
+        if not filepath:  # Python takes empty str as False
+            print("\nERROR: No Input.\nTry Again:\n")
+
+    filepath = formatDraggedpath(filepath)
+
+    if not os.path.isfile(filepath) and not filepath: # TODO: can this code ever be reached? as we already have formatDraggedpath()
+        raise Exception(f"\nNOT a path, please re-check. \nYour entering = {filepath} \n")
+
+
     return filepath
+
+def formatDraggedpath(path=''):
+    '''Formatting dragged-into-shell filepath; 
+        if path is already in good format, do nothing.'''
+    path = path.strip() # Dragged-ins are likely to leave a whitespace at end
+    path = path.replace('\\', '') # For filepath containing whitespace, single-quote, etc
+    if not os.path.isfile(path):
+        raise Exception(f"\nformatDraggedpath() can't deal with it. \n  The exception raising filepath = {path} \n"); return
+    return path
+
+def inputChoice(choices=[], prompt='') -> str:
+    if not prompt: 
+        prompt = f"Choose from {choices}:\n" 
+
+    while True:
+        choice = input(prompt)
+        if choice in choices: break
+        print(f"\nERROR: Invalid Choice.\nChoose Again:\n")
+    return choice
 
 
 # ------ output ------
@@ -57,18 +82,26 @@ def displayLinesByChar(strLines, periodCh=0.1, periodLine=0.3):
         displayLineByChar(strLine, periodCh)
         time.sleep(periodLine)
 
-# dragFileHere() - Test Cases
-dragFileHere()
-# drag nothing
-# drag file without whitespaces 
-# drag file with whitespaces ❌
-#   e.g. "/Users/admin/Downloads/how\ to\ learn.rtf"
+if __name__ == "__main__":
+    # dragFileHere() - Test Cases
+    # drag nothing
+    # drag file without whitespaces 
+    # drag file with whitespaces 
+    #   e.g. "/Users/admin/Downloads/how\ to\ learn.rtf"
+    # drag file with Chinese  ❌
+    #   e.g. "/Users/admin/Downloads/喀秋莎的故事\ -\ Planya.mp4 "
+    #   # UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8a in position 34: invalid start byte
+    # ------
+    filepath = dragFileHere()
+    print(filepath) 
+    if filepath: print(os.path.isfile(filepath))
 
-# # displayLineByChar() - Test Cases
-# displayLineByChar("")
-# displayLineByChar("Hello World!")
-# displayLineByChar("Loading...", period=0.2)
 
-# # displayLinesByChar() - Test Cases
-# displayLinesByChar("Hello World!")
-# displayLinesByChar("1st line... \n2nd line...\n3rd line.")
+    # # displayLineByChar() - Test Cases
+    # displayLineByChar("")
+    # displayLineByChar("Hello World!")
+    # displayLineByChar("Loading...", period=0.2)
+
+    # # displayLinesByChar() - Test Cases
+    # displayLinesByChar("Hello World!")
+    # displayLinesByChar("1st line... \n2nd line...\n3rd line.")
